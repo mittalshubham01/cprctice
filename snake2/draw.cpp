@@ -2,10 +2,10 @@
 #include<stdlib.h> 
 #include<iostream>
 #include<time.h>
-#include<windows.h>//¿ØÖÆÌ¨±à³ÌÖ÷ÒªÍ·ÎÄ¼þ
+#include<windows.h>//ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÍ·ï¿½Ä¼ï¿½
 using namespace std;
-void pos(int x,int y);//È·¶¨¹â±êÎ»ÖÃ
-HANDLE hOut=GetStdHandle(STD_OUTPUT_HANDLE);//»ñÈ¡±ê×¼Êä³ö¾ä±ú
+void pos(int x,int y);//È·ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+HANDLE hOut=GetStdHandle(STD_OUTPUT_HANDLE);//ï¿½ï¿½È¡ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 struct snake{	
 	int i;
 	int j;
@@ -13,36 +13,36 @@ struct snake{
 	};
 
 
-//ÉèÖÃ¹â±êÎ»ÖÃ
+//ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½Î»ï¿½ï¿½
 void pos(int x,int y){
-    COORD posPoint = {x,y}; //ÉèÖÃ×ø±ê
+    COORD posPoint = {x,y}; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     SetConsoleCursorPosition(hOut,posPoint);
 }
 
 void update(int x, int y, int sign){
 	pos(x * 2, y);
 	switch(sign){
-		case 0: //Ôö¼ÓÉßÊ× 
-			cout << "¡ñ";
+		case 0: //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+			cout << "ï¿½ï¿½";
 			break;
-		case 1: //Ôö¼ÓÉßÉí 
-			cout << "¡ö";
+		case 1: //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+			cout << "ï¿½ï¿½";
 			break;
-		case 2: //Ôö¼ÓÐÇÐÇ
-			cout << "¡ï";	
+		case 2: //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			cout << "ï¿½ï¿½";	
 			break; 
-		case 3: //É¾³ýÉßÉí
-			cout << "¡õ"; 
+		case 3: //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			cout << "ï¿½ï¿½"; 
 			break;
 	}
 	pos(0, 0);	
 }
-//	Ç½Ìå£¬ÉßÉí
-//   ¿Õ¡õ
+//	Ç½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½
+//   ï¿½Õ¡ï¿½
 void initMap(int **map, int height, int weight){
 
-	// ÕâÀïÓÐÒ»¸öÐèÒª¹Ø×¢µÄµØ·½£¬ ÄÇ¾ÍÊÇ±ß½çÊÇÇ½£¬ÄÇÃ´µ½Ê±ºòÔÚÅÐ¶¨µÄÊ±ºò£¬ 
-	// ÎÒÃÇÒª½«Ç½ÌåµÄ´óÐ¡Ëã½øµ½Õû¸öµØÍ¼´óÐ¡ÖÐ£¬Ò²¾ÍÊÇheightÊÇ°üº¬ÁËÇ½ÌåÁËµÄ 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½×¢ï¿½ÄµØ·ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ç±ß½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ 
+	// ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ç½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ð¡ï¿½Ð£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½heightï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½Ëµï¿½ 
 	for(int i = 0; i < height; i++){
 		for(int j = 0; j < weight; j++){
 			if(i == 0 || i == height - 1){
@@ -57,24 +57,25 @@ void initMap(int **map, int height, int weight){
 	return;
 }
 void draw(int **map, int *star, int height, int weight){
-	// ÕâÀïÓÐÒ»¸öÐèÒª¹Ø×¢µÄµØ·½£¬ ÄÇ¾ÍÊÇ±ß½çÊÇÇ½£¬ÄÇÃ´µ½Ê±ºòÔÚÅÐ¶¨µÄÊ±ºò£¬ 
-	// ÎÒÃÇÒª½«Ç½ÌåµÄ´óÐ¡Ëã½øµ½Õû¸öµØÍ¼´óÐ¡ÖÐ£¬Ò²¾ÍÊÇheightÊÇ°üº¬ÁËÇ½ÌåÁËµÄ 
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½×¢ï¿½ÄµØ·ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ç±ß½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ 
+	// ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ç½ï¿½ï¿½Ä´ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ð¡ï¿½Ð£ï¿½Ò²ï¿½ï¿½ï¿½ï¿½heightï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½Ëµï¿½ 
 
-	/* Çå¿ÕÆÁÄ» */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Ä» */
 	system("cls");
 	pos(0, 0);
 	for(int i = 0; i < height; i++){
 		for(int j = 0; j < weight; j++){
 			if(map[i][j] == 1){
-				cout << "¡ö";	// ÉßÉíºÍÇ½Ìå 
+				cout << "ï¿½ï¿½";	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ 
 			}else if(map[i][j] == 2){
-				cout << "¡ñ";	// ÉßÊ× 
+				cout << "ï¿½ï¿½";	// ï¿½ï¿½ï¿½ï¿½ 
 			}else if(i == star[0] && j == star[1]){
-				cout << "¡ï";	// ÐÇÐÇ 
+				cout << "ï¿½ï¿½";	// ï¿½ï¿½ï¿½ï¿½ 
 			}else{
-				cout << "¡õ"; 	// ¿ÉÒÆ¶¯ÇøÓò 
+				cout << "ï¿½ï¿½"; 	// ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ 
 			}
 		}
+		cout<<"akash"
 		cout << endl;
 	} 
 	return;
@@ -82,7 +83,7 @@ void draw(int **map, int *star, int height, int weight){
 
 void drawSnake(int **map, struct snake snake){
 	struct snake *p = snake.next;
-	map[p->i][p->j] = 2;	// ÉßÍ·
+	map[p->i][p->j] = 2;	// ï¿½ï¿½Í·
 	p = p->next;
 	while(p){
 		map[p->i][p->j] = 1;
